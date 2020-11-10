@@ -1,0 +1,790 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "스크래핑_국민청원데이터.ipynb _ 1103 손영준",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "widgets": {
+      "application/vnd.jupyter.widget-state+json": {
+        "da1d39d48ff44ba081e43ef84725144a": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_9b03237fa9bb4839ad0f4b1a173f5e8e",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_1edf9b0cee01425887ff2dbabf0e4511",
+              "IPY_MODEL_1ff9891cd85d4ea18a977a2a9d7b06c7"
+            ]
+          }
+        },
+        "9b03237fa9bb4839ad0f4b1a173f5e8e": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "1edf9b0cee01425887ff2dbabf0e4511": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_6996ece7e74a4f8fa411a695500d3dae",
+            "_dom_classes": [],
+            "description": " 53%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "",
+            "max": 10000,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 5333,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_743745c6ccca4889a0dbe14b8b019415"
+          }
+        },
+        "1ff9891cd85d4ea18a977a2a9d7b06c7": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_26ec5a9db05046c8bf976dc0b88f6cb5",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 5332/10000 [58:10&lt;42:26,  1.83it/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_edab7437bc6047e3997b6ed236fa0341"
+          }
+        },
+        "6996ece7e74a4f8fa411a695500d3dae": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "743745c6ccca4889a0dbe14b8b019415": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "26ec5a9db05046c8bf976dc0b88f6cb5": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "edab7437bc6047e3997b6ed236fa0341": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        }
+      }
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/taegujun/-_-/blob/main/%EC%8A%A4%ED%81%AC%EB%9E%98%ED%95%91_%EA%B5%AD%EB%AF%BC%EC%B2%AD%EC%9B%90%EB%8D%B0%EC%9D%B4%ED%84%B0_ipynb___1110_%EC%86%90%EC%98%81%EC%A4%80\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "d1i7pyLvcyBE"
+      },
+      "source": [
+        "# 국민청원 데이터 가져오기"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ftYybXggcudF"
+      },
+      "source": [
+        "\n",
+        "- 참고:\n",
+        "  - [국민청원 데이터셋 CSV](https://newhiwoong.github.io/%EA%B5%AD%EB%AF%BC%EC%B2%AD%EC%9B%90/%EA%B5%AD%EB%AF%BC%EC%B2%AD%EC%9B%90-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B)\n",
+        "  - [청와대 국민청원 https://www1.president.go.kr/petitions](https://www1.president.go.kr/petitions)\n",
+        "  - [Using Selenium with Google Colaboratory https://darektidwell.com/using-selenium-with-google-colaboratory/](https://darektidwell.com/using-selenium-with-google-colaboratory/)\n",
+        "  - [https://stackoverflow.com/questions/56829470/selenium-google-colab-error-chromedriver-executable-needs-to-be-in-path](https://stackoverflow.com/questions/56829470/selenium-google-colab-error-chromedriver-executable-needs-to-be-in-path)\n",
+        " \n",
+        "- 참고링크 중 \"국민청원 데이터셋 CSV\"의 내용을 토대로 수정하여 작성\n",
+        "- 1건당 1-2초(google colab에서 더 느림, 실 사용은 로컬을 권장함)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_7Bh5kPddKKx"
+      },
+      "source": [
+        "## 확인된 에러의 경우 \n",
+        "1. 없는 페이지\n",
+        "2. 관리자 차단 페이지"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "T7v_K1bAgNtJ",
+        "outputId": "3e687e26-fa9b-4ad8-f036-518de4db7ded",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "import sys\n",
+        "\n",
+        "# install chromium, its driver, and selenium\n",
+        "if 'google.colab' in sys.modules:\n",
+        "    !apt-get update\n",
+        "    !apt install chromium-chromedriver\n",
+        "    !cp /usr/lib/chromium-browser/chromedriver /usr/bin\n",
+        "    !pip install selenium\n",
+        "\n",
+        "# set options to be headless, ..\n",
+        "from selenium import webdriver\n",
+        "from selenium.webdriver.common.by import By\n",
+        "from selenium.webdriver.support.ui import WebDriverWait\n",
+        "from selenium.webdriver.support import expected_conditions as EC\n",
+        "\n",
+        "from bs4 import BeautifulSoup\n",
+        "import re\n",
+        "\n",
+        "if 'ipykernel' in sys.modules:\n",
+        "    from tqdm import tqdm_notebook as tqdm\n",
+        "else:\n",
+        "    from tqdm import tqdm"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Get:1 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease [3,626 B]\n",
+            "Ign:2 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease\n",
+            "Get:3 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]\n",
+            "Ign:4 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease\n",
+            "Get:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Release [697 B]\n",
+            "Hit:6 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release\n",
+            "Get:7 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Release.gpg [836 B]\n",
+            "Hit:8 http://archive.ubuntu.com/ubuntu bionic InRelease\n",
+            "Get:9 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic InRelease [15.9 kB]\n",
+            "Get:11 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]\n",
+            "Ign:12 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Packages\n",
+            "Get:12 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Packages [407 kB]\n",
+            "Get:13 http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic InRelease [21.3 kB]\n",
+            "Get:14 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]\n",
+            "Get:15 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [1,750 kB]\n",
+            "Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [2,167 kB]\n",
+            "Get:17 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic/main Sources [1,688 kB]\n",
+            "Get:18 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [1,354 kB]\n",
+            "Get:19 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [2,119 kB]\n",
+            "Get:20 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic/main amd64 Packages [864 kB]\n",
+            "Get:21 http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic/main amd64 Packages [46.6 kB]\n",
+            "Fetched 10.7 MB in 6s (1,682 kB/s)\n",
+            "Reading package lists... Done\n",
+            "Reading package lists... Done\n",
+            "Building dependency tree       \n",
+            "Reading state information... Done\n",
+            "The following additional packages will be installed:\n",
+            "  chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra\n",
+            "Suggested packages:\n",
+            "  webaccounts-chromium-extension unity-chromium-extension adobe-flashplugin\n",
+            "The following NEW packages will be installed:\n",
+            "  chromium-browser chromium-browser-l10n chromium-chromedriver\n",
+            "  chromium-codecs-ffmpeg-extra\n",
+            "0 upgraded, 4 newly installed, 0 to remove and 31 not upgraded.\n",
+            "Need to get 80.1 MB of archives.\n",
+            "After this operation, 271 MB of additional disk space will be used.\n",
+            "Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 chromium-codecs-ffmpeg-extra amd64 86.0.4240.75-0ubuntu0.18.04.1 [1,127 kB]\n",
+            "Get:2 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 chromium-browser amd64 86.0.4240.75-0ubuntu0.18.04.1 [70.9 MB]\n",
+            "Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 chromium-browser-l10n all 86.0.4240.75-0ubuntu0.18.04.1 [3,579 kB]\n",
+            "Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 chromium-chromedriver amd64 86.0.4240.75-0ubuntu0.18.04.1 [4,486 kB]\n",
+            "Fetched 80.1 MB in 9s (9,252 kB/s)\n",
+            "Selecting previously unselected package chromium-codecs-ffmpeg-extra.\n",
+            "(Reading database ... 144786 files and directories currently installed.)\n",
+            "Preparing to unpack .../chromium-codecs-ffmpeg-extra_86.0.4240.75-0ubuntu0.18.04.1_amd64.deb ...\n",
+            "Unpacking chromium-codecs-ffmpeg-extra (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "Selecting previously unselected package chromium-browser.\n",
+            "Preparing to unpack .../chromium-browser_86.0.4240.75-0ubuntu0.18.04.1_amd64.deb ...\n",
+            "Unpacking chromium-browser (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "Selecting previously unselected package chromium-browser-l10n.\n",
+            "Preparing to unpack .../chromium-browser-l10n_86.0.4240.75-0ubuntu0.18.04.1_all.deb ...\n",
+            "Unpacking chromium-browser-l10n (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "Selecting previously unselected package chromium-chromedriver.\n",
+            "Preparing to unpack .../chromium-chromedriver_86.0.4240.75-0ubuntu0.18.04.1_amd64.deb ...\n",
+            "Unpacking chromium-chromedriver (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "Setting up chromium-codecs-ffmpeg-extra (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "Setting up chromium-browser (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "update-alternatives: using /usr/bin/chromium-browser to provide /usr/bin/x-www-browser (x-www-browser) in auto mode\n",
+            "update-alternatives: using /usr/bin/chromium-browser to provide /usr/bin/gnome-www-browser (gnome-www-browser) in auto mode\n",
+            "Setting up chromium-chromedriver (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "Setting up chromium-browser-l10n (86.0.4240.75-0ubuntu0.18.04.1) ...\n",
+            "Processing triggers for hicolor-icon-theme (0.17-2) ...\n",
+            "Processing triggers for mime-support (3.60ubuntu1) ...\n",
+            "Processing triggers for man-db (2.8.3-2ubuntu0.1) ...\n",
+            "cp: '/usr/lib/chromium-browser/chromedriver' and '/usr/bin/chromedriver' are the same file\n",
+            "Collecting selenium\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/80/d6/4294f0b4bce4de0abf13e17190289f9d0613b0a44e5dd6a7f5ca98459853/selenium-3.141.0-py2.py3-none-any.whl (904kB)\n",
+            "\u001b[K     |████████████████████████████████| 911kB 2.7MB/s \n",
+            "\u001b[?25hRequirement already satisfied: urllib3 in /usr/local/lib/python3.6/dist-packages (from selenium) (1.24.3)\n",
+            "Installing collected packages: selenium\n",
+            "Successfully installed selenium-3.141.0\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ue63QSAXIddm"
+      },
+      "source": [
+        "options = webdriver.ChromeOptions()\n",
+        "options.add_argument('--headless')\n",
+        "options.add_argument('--no-sandbox')\n",
+        "options.add_argument('--disable-dev-shm-usage')"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "roE_ee6VtFEL"
+      },
+      "source": [
+        "def get_petition(wd, number):\n",
+        "    base_url='https://www1.president.go.kr/petitions/'\n",
+        "    try:\n",
+        "        wd.get(base_url+str(number))\n",
+        "        element = WebDriverWait(wd, 2).until(\n",
+        "            EC.presence_of_element_located((By.CLASS_NAME, 'petitionsView_title')))\n",
+        "        #bs = BeautifulSoup(wd.page_source, 'html.parser')\n",
+        "        bs = BeautifulSoup(wd.page_source, 'lxml')\n",
+        "\n",
+        "        progress = bs.find('div',{'class':'petitionsView_progress'}).get_text().strip()\n",
+        "        title = bs.find('h3',{'class':'petitionsView_title'}).get_text().strip()\n",
+        "        like = bs.find('h2',{'class':'petitionsView_count'}).get_text().strip()\n",
+        "        like = int(''.join(re.findall('\\d+', str(like))))\n",
+        "        if progress == '답변완료':\n",
+        "            contents = bs.find_all('div',{'class':'View_write'})[1].get_text().strip()\n",
+        "            answer = bs.find_all('div',{'class':'pr_tk25'})[1].get_text().strip()[4:].strip()\n",
+        "        else:\n",
+        "            contents = bs.find('div',{'class':'View_write'}).get_text().strip()\n",
+        "            answer = ''\n",
+        "        info = bs.find('ul',{'class':'petitionsView_info_list'}).get_text().split('\\n')\n",
+        "        category = info[1][4:]\n",
+        "        sday = info[2][4:]\n",
+        "        eday = info[3][4:]\n",
+        "        proponent = info[4][3:].split()[0]\n",
+        "        return {'number':number, 'progress':progress, 'title':title,  'like':like,\n",
+        "                'contents':contents, 'answer':answer, 'category':category,\n",
+        "                'sday':sday, 'eday':eday, 'proponent':proponent}\n",
+        "    except Exception as e:\n",
+        "        print(number, e)\n",
+        "        return {'number':number, 'progress':'error', 'title':'',  'like':0,\n",
+        "                'contents':str(e), 'answer':'', 'category':'',\n",
+        "                'sday':'', 'eday':'', 'proponent':''}"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "v0tAtHFdtqHB",
+        "outputId": "0327da37-7cba-481e-8f43-b7dde5ef5f95",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "if __name__ == '__main__' or 'google.colab' in sys.modules:\n",
+        "    wd = webdriver.Chrome('chromedriver',options=options)\n",
+        "    print(get_petition(wd, 300))\n",
+        "    print(get_petition(wd, 582349))\n",
+        "    wd.quit()"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "{'number': 300, 'progress': '청원종료', 'title': '대기업의 잘못된 인터넷 개인가입자 민원 처리방식과 위약금', 'like': 0, 'contents': '저는 SK인터넷,TV를 가입해서 사용하고 있는 개인 가입자 입니다.8/22일 휴가를 마치고 집으로 오니 인터넷,TV가 안되어서 SK 장애부서인 106번 으로전화하여 수리요청을 했습니다.상담원이 관할지역 기사님을 알아보고는 오늘은 기사님들이 스케줄이 안되어서 장애처리를 내일 해야 된다고 하였습니다.그래서 오늘 아이들 인터넷으로 숙제도해야되고 TV시청도 해야되니 오늘 늦더라도 고쳐달라고 말하니,조금뒤 기술부서 실장님이 전화를 주셔서 어떻게 해도 금일중으로는  기사님을 수배할수 없기 때문에 장애처리를 할수 없고 내일 오전10시즘에 처리 할수 있다고 말했습니다.A/S기사님들은 오전에 그날 A/S처리  스케줄을 다잡고 나가는데 그러면 소비자 들은 장애가 나면 무조건 다음날 A/S처리를 봤아야 되니까? 소비자 잘못이 아니라 SK장비때문에 장애가 났는데 이거는 SK에서 긴급 장애처리 기사를 더고용해서 당일 장애건도 그날A/S처리를 해줘야 되는거 아닙니까.그리고 SK잘못때문에 장애가 났는데 당일 처리를 못해주면 인터넷 해지를 요청하니 수십만원의 위약금을 물어야 된다고 하는데 이것은 잘못된 처방 아닙니까.자기들 장비때문에 장애가나서 사용못하고 그래서 수리요청하니 당일 처리가 힘들고,그러면 해지하려하니 위약금 내라고 하고,완전히 개인가입자는 봉입니까.그리고 처음 인터넷가입시 장애처리 문제에 대해서는 설명도 없었는데 장애가 나고나니 스케줄 잡아서 내일 A/S받든지 아님 나갈 사람이 없어방법이 없다.알아서 해라라는 식으로 답변을 듣기만 해야되나요.장애신고 하는 사람들은 지금 인터넷,TV가 안되어서 전화를 하는 사람들이지 미리 고장날것을 알고 전화해서 예약스케줄을 잡는 사람들이 아닙니다.SK인터넷 장애처리부서는 생각좀 하시고 일합시다.', 'answer': '', 'category': '기타', 'sday': '2017-08-22', 'eday': '2017-09-06', 'proponent': 'kakao'}\n",
+            "{'number': 582349, 'progress': '답변완료', 'title': '나경원 자한당 원내대표의 각종 의혹에 대한 특검 요청!', 'like': 365040, 'contents': '나경원 자한당 원내대표의 각종 의혹ㆍ논란들이\\n일파만파 번지고 있습니다.\\n\\n야권정치인의 실세인만큼 의혹이 말끔히 해소되려면\\n야당이 그토록 강조하는 정치적 중립성을 보다 강조하기 위해서는 현정권의 하에 있는 검찰보다 나경원 의원이 좋아하는 특검을 설치하여 모든 의혹을 말끔히 해소하는게 나경원 원내대표도 바라마지 않을것입니다.\\n\\n이에 특검수사를 요청합니다.', 'answer': '다음은 나경원 자유한국당 원내대표의 각종 의혹에 대해 특검을 요청하신 청원에 대해 답변드리겠습니다.\\n본 청원은 8월 28일부터 한 달간 36만 여명의 국민께서 동의해 주셨습니다.\\n\\n청원의 계기가 된 것은 누리꾼 사이에서 불거진 나경원 의원의 자녀에 대한 의혹입니다. 국적 의혹, 논문의 제1저자 특혜 의혹 등과 관련된 다수의 언론 보도가 있었습니다.\\n\\n청원인께서는 나경원 자유한국당 원내대표가 야권의 대표 정치인인만큼 정치적 중립성을 보장하기 위해 특별검사를 통해 의혹을 말끔히 해소할 필요가 있다고 주장하셨습니다.\\n\\n먼저 청원인께서 요구하신 특별검사제도에 대하여 설명드리겠습니다.\\n\\n특별 검사 제도는, 주로 고위 공직자의 비리 또는 위법 혐의가 발견되었을 때 그 수사와 기소를 정권의 영향을 받을 수 있는 정규 검사가 아닌 ‘독립된 변호사’로 담당하게 하는 제도입니다.\\n특별 검사 제도는 특정 사건에 한정하여 검찰 등 행정부와는 독립된 사람에게 수사 및 기소 등 검사 역할을 수행하도록 하는 제도입니다.\\n\\n우리나라의 특검제는 정치적 사건이나 권력형 범죄와 비리 사건에서 나타난 검찰 수사의 소극성 또는 편향성에 대한 제도적 보완으로 1988년 당시 야당이던 평화민주당에 의해 처음 제기되었습니다. 그 이후 10년 이상의 논의를 거쳐 1999년에 특검제가 도입되었습니다. 또한 2014년에는 상설 특검을 도입하는 내용을 담은 ‘특별검사의 임명 등에 관한 법률’이 제정되었습니다.\\n\\n특검은 △ 국회가 정치적 중립성과 공정성 등을 이유로 특별검사의 수사가 필요하다고 판단하여 본회의에서 의결하거나 △ 법무부 장관이 정부 고위공직자의 비리를 대상으로 이해관계 충돌이나 공정성 등을 이유로 특검의 수사가 필요하다고 판단할 경우 발동될 수 있습니다. 후자의 경우, 다시 말해 법무부 장관이 특검 여부를 판단하는 경우, 법무부 장관은 반드시 검찰총장의 의견을 들어야 합니다.\\n\\n본 청원의 경우, 청원인께서는 나경원 자유한국당 원내대표의 자녀관련 의혹을 밝히는 특검을 요구하셨습니다. 그러나 본 건과 관련해 특별검사의 도입 여부는 국회에서 논의하여 결정해야 할 사안입니다. 법무부 장관이 정부와 무관한 사안에 대해 특검을 발동할 수는 없기 때문입니다.\\n\\n지난 9월 한 시민단체는 나경원 자유한국당 의원의 ‘자녀입시 의혹’과 관련하여 검찰에 이를 고발하였습니다. 그 이후 본 사건은 현재 검찰에서 수사 중입니다. 따라서 검찰의 수사 결과를 지켜봐야 하는 상황입니다.\\n\\n최근 부모의 특권적 지위를 이용하여 입시제도에서 혜택을 받은 경우에 대해 국민적 우려는 물론, 입시제도에서의 공정성, 사회적 불평등 해소에 대한 국민의 요구가 높습니다. 이러한 국민의 목소리를 반영하여 교육부에서는 학생부종합전형 전면 실태조사를 엄정하게 추진하고 있으며, 나아가 고교 서열화 해소를 위한 방안 등 입시제도 개편안을 준비하고 있습니다.\\n\\n또한 국회에서도 최근『국회의원 자녀의 대학입학전형과정 조사에 관한 특별법』『고위공직자 자녀 입시비리 조사를 위한 특별법』등 관련 법안이 발의되었습니다. 이 법안은 입시비리에 대한 전수조사 특별위원회를 구성하여 고위공직자의 자녀에 대한 특혜를 조사하고 결과에 따라 고발 및 수사요청, 감사원 감사요구 등을 실시하는 내용 등을 담고 있습니다.\\n\\n정부는 본 청원을 계기로 국회의원을 비롯한 사회 특권층, 그리고 이들 자녀의 입시 특혜 등 다양한 불공정에 대한 국민적 우려와 공정에 대한 강력한 열망을 다시 한 번 절감하였습니다. 이 점에 대해 청원인과 청원에 참여해 주신 국민께 깊이 감사드립니다.\\n\\n정부는 우리 사회에 만연한 특권과 반칙, 불공정을 없애고, 나아가서 제도에 내재 된 합법적인 불공정과 특권까지 근본적으로 바꿔낼 수 있도록 더욱 노력하겠습니다.\\n\\n오늘 답변은 여기서 마치겠습니다. 감사합니다.', 'category': '정치개혁', 'sday': '2019-08-28', 'eday': '2019-09-27', 'proponent': 'naver'}\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KNvyGFVlKO-R"
+      },
+      "source": [
+        "## 사용예"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Alk5_gAHlPq5",
+        "outputId": "f93dce67-a95c-40f8-9694-e9d3d787052e",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 1000,
+          "referenced_widgets": [
+            "da1d39d48ff44ba081e43ef84725144a",
+            "9b03237fa9bb4839ad0f4b1a173f5e8e",
+            "1edf9b0cee01425887ff2dbabf0e4511",
+            "1ff9891cd85d4ea18a977a2a9d7b06c7",
+            "6996ece7e74a4f8fa411a695500d3dae",
+            "743745c6ccca4889a0dbe14b8b019415",
+            "26ec5a9db05046c8bf976dc0b88f6cb5",
+            "edab7437bc6047e3997b6ed236fa0341"
+          ]
+        }
+      },
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "## 청와대 국민청원: https://www1.president.go.kr/petitions\n",
+        "\n",
+        "def get_p(시작번호 = 40001, 수집량 = 10000): # 100개당 1분정도 소요. Colab에서는 최대 1만개씩 수집 추천\n",
+        "    rtn = []\n",
+        "    wd = webdriver.Chrome('chromedriver',options=options)\n",
+        "    for idx, i in enumerate(tqdm(range(시작번호-수집량, 시작번호))):\n",
+        "        tmp = get_petition(wd, i)\n",
+        "        if idx == 0:\n",
+        "            rtn_c = list(tmp.keys())\n",
+        "        rtn.append(list(tmp.values()))\n",
+        "        # 오래 유지될경우 느려지는 경향이 있어 중간에 초기화\n",
+        "        if idx % 200 == 0:\n",
+        "            wd.quit()\n",
+        "            wd = webdriver.Chrome('chromedriver',options=options)\n",
+        "    return (rtn_c, rtn)\n",
+        "\n",
+        "\n",
+        "c, rtn = get_p()\n",
+        "%time wd = webdriver.Chrome('chromedriver',options=options)\n",
+        "%time rtn.append(list(get_petition(wd, 40001).values()))\n",
+        "%time rtn.append(list(get_petition(wd, 10000).values()))\n",
+        "wd.quit()\n",
+        "결과 = pd.DataFrame(rtn, columns=c)\n",
+        "결과"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:8: TqdmDeprecationWarning: This function will be removed in tqdm==5.0.0\n",
+            "Please use `tqdm.notebook.tqdm` instead of `tqdm.tqdm_notebook`\n",
+            "  \n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "da1d39d48ff44ba081e43ef84725144a",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, max=10000.0), HTML(value='')))"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "30027 Message: \n",
+            "\n",
+            "30062 Message: \n",
+            "\n",
+            "30101 Message: \n",
+            "\n",
+            "30138 Message: \n",
+            "\n",
+            "30151 Message: \n",
+            "\n",
+            "30166 Message: \n",
+            "\n",
+            "30208 Message: \n",
+            "\n",
+            "30244 Message: \n",
+            "\n",
+            "30258 Message: \n",
+            "\n",
+            "30259 Message: \n",
+            "\n",
+            "30281 Message: \n",
+            "\n",
+            "30324 Message: \n",
+            "\n",
+            "30447 Message: \n",
+            "\n",
+            "30533 Message: \n",
+            "\n",
+            "30886 Message: \n",
+            "\n",
+            "30917 Message: \n",
+            "\n",
+            "30925 Message: \n",
+            "\n",
+            "30944 Message: \n",
+            "\n",
+            "30947 Message: \n",
+            "\n",
+            "30979 Message: \n",
+            "\n",
+            "31006 Message: \n",
+            "\n",
+            "31036 Message: \n",
+            "\n",
+            "31043 Message: \n",
+            "\n",
+            "31057 Message: \n",
+            "\n",
+            "31060 Message: \n",
+            "\n",
+            "31077 Message: \n",
+            "\n",
+            "31094 Message: \n",
+            "\n",
+            "31117 Message: \n",
+            "\n",
+            "31138 Message: \n",
+            "\n",
+            "31139 Message: \n",
+            "\n",
+            "31153 Message: \n",
+            "\n",
+            "31154 Message: \n",
+            "\n",
+            "31160 Message: \n",
+            "\n",
+            "31173 Message: \n",
+            "\n",
+            "31180 Message: \n",
+            "\n",
+            "31190 Message: \n",
+            "\n",
+            "31209 Message: \n",
+            "\n",
+            "31229 Message: \n",
+            "\n",
+            "31236 Message: \n",
+            "\n",
+            "31281 Message: \n",
+            "\n",
+            "31286 Message: \n",
+            "\n",
+            "31289 Message: \n",
+            "\n",
+            "31301 Message: \n",
+            "\n",
+            "31303 Message: \n",
+            "\n",
+            "31316 Message: \n",
+            "\n",
+            "31333 Message: \n",
+            "\n",
+            "31361 Message: \n",
+            "\n",
+            "31369 Message: \n",
+            "\n",
+            "31373 Message: \n",
+            "\n",
+            "31374 Message: \n",
+            "\n",
+            "31385 Message: \n",
+            "\n",
+            "31408 Message: \n",
+            "\n",
+            "31424 Message: \n",
+            "\n",
+            "31437 Message: \n",
+            "\n",
+            "31449 Message: \n",
+            "\n",
+            "31450 Message: \n",
+            "\n",
+            "31482 Message: \n",
+            "\n",
+            "31520 Message: \n",
+            "\n",
+            "31546 Message: \n",
+            "\n",
+            "31882 Message: \n",
+            "\n",
+            "31919 Message: \n",
+            "\n",
+            "32555 Message: \n",
+            "\n",
+            "32570 Message: \n",
+            "\n",
+            "32857 Message: \n",
+            "\n",
+            "33136 Message: \n",
+            "\n",
+            "33569 Message: \n",
+            "\n",
+            "33610 Message: \n",
+            "\n",
+            "33904 Message: \n",
+            "\n",
+            "34014 Message: \n",
+            "\n",
+            "34090 Message: \n",
+            "\n",
+            "34194 Message: \n",
+            "\n",
+            "34407 Message: \n",
+            "\n",
+            "35178 Message: \n",
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GSqC40pUw2XC"
+      },
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Q5FgFY9c7aBX"
+      },
+      "source": [
+        "결과.to_csv('국민청원데이터_최종.csv', header='true', encoding='utf-8-sig')"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "k73KCJ31l38S"
+      },
+      "source": [
+        "[https://www1.president.go.kr/petitions/10](https://www1.president.go.kr/petitions/10)\n",
+        "- 관리자에 의해 비공개된 청원입니다"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yfTxAyis1qz2"
+      },
+      "source": [
+        ""
+      ]
+    }
+  ]
+}
